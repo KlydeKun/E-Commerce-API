@@ -1,3 +1,4 @@
+const User = require("../models/User");
 const { verifyToken, verifyTokenAndAuthorization } = require("./verifyToken");
 const router = require("express").Router();
 
@@ -12,7 +13,7 @@ router.put("/:id", verifyTokenAndAuthorization, async (req, res) => {
 
   try {
     const updatedUser = await User.findByIdAndUpdate(
-      req.params.id,
+        req.params.id,
       {
         $set: req.body,
       },
